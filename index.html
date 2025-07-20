@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SECUR-E: Society Command Center</title>
+
+    <!-- Meta Info -->
+    <meta name="description" content="An unparalleled AI security service with proactive surveillance, family status tracking, and a comprehensive event log." />
+    
+    <!-- PWA & Mobile (All Inlined) -->
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Inlined Icon -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%230f172a'/%3E%3Cpath fill='%2322d3ee' d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z'/%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%230f172a'/%3E%3Cpath fill='%2322d3ee' d='M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z'/%3E%3C/svg%3E">
+
+    <!-- Inlined Manifest -->
+    <link rel="manifest" href="data:application/manifest+json,%7B%22short_name%22%3A%22SECUR-E%22%2C%22name%22%3A%22SECUR-E%3A%20Advanced%20Security%20Intelligence%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage/svg%2Bxml%2C%253Csvg%2520xmlns%3D'http%3A//www.w3.org/2000/svg'%2520viewBox%3D'0%25200%252024%252024'%253E%253Crect%2520width%3D'24'%2520height%3D'24'%2520fill%3D'%25230f172a'/%253E%253Cpath%2520fill%3D'%252322d3ee'%2520d%3D'M12%25201L3%25205v6c0%25205.55%25203.84%252010.74%25209%252012%25205.16-1.26%25209-6.45%25209-12V5l-9-4z'/%253E%253C/svg%253E%22%2C%22type%22%3A%22image/svg%2Bxml%22%2C%22sizes%22%3A%22192x192%20512x512%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22theme_color%22%3A%22%230f172a%22%2C%22background_color%22%3A%22%230f172a%22%7D">
+
+    <!-- Styles & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --color-bg-primary: #0f172a; /* slate-900 */
+        --color-bg-secondary: #1e293b; /* slate-800 */
+        --color-bg-tertiary: #334155; /* slate-700 */
+        --color-border: #334155; /* slate-700 */
+        --color-accent: #22d3ee; /* cyan-400 */
+        --color-accent-dark: #0891b2; /* cyan-600 */
+        --color-text-primary: #f1f5f9; /* slate-100 */
+        --color-text-secondary: #94a3b8; /* slate-400 */
+        --color-text-dark: #1e293b; /* slate-800 */
+        --color-danger: #f43f5e; /* rose-500 */
+        --color-success: #4ade80; /* green-400 */
+        --color-warning: #facc15; /* yellow-400 */
+        --road-color: #2d3748; /* A darker gray for asphalt */
+      }
+
+      body {
+        font-family: 'Manrope', sans-serif;
+        background-color: var(--color-bg-primary);
+        color: var(--color-text-primary);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overscroll-behavior: none;
+      }
+      .font-mono {
+        font-family: 'Roboto Mono', monospace;
+      }
+      /* Custom scrollbar */
+      ::-webkit-scrollbar { width: 6px; }
+      ::-webkit-scrollbar-track { background: var(--color-bg-primary); }
+      ::-webkit-scrollbar-thumb { background: var(--color-bg-tertiary); border-radius: 3px; }
+      ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+      @keyframes pulse-deterrent {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.5); opacity: 0.7; }
+      }
+      .animate-pulse-deterrent {
+        animation: pulse-deterrent 1s ease-out;
+      }
+
+      @keyframes fade-in-down {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in-down { animation: fade-in-down 0.3s ease-out forwards; }
+      
+      @keyframes pulse-expand {
+        0% { transform: scale(0.5); opacity: 0.7; }
+        100% { transform: scale(1.5); opacity: 0; }
+      }
+      .animate-pulse-expand {
+        animation: pulse-expand 2s infinite ease-out;
+      }
+
+
+      /* Map Background */
+      .map-background {
+        background-color: #0a101d;
+        background-image: 
+          linear-gradient(rgba(30, 41, 59, 0.5) 1px, transparent 1px),
+          linear-gradient(to right, rgba(30, 41, 59, 0.5) 1px, transparent 1px);
+        background-size: 2.5rem 2.5rem;
+        background-position: center center;
+        border-color: var(--color-accent-dark);
+      }
+      
+      /* App container styling */
+      .app-shell {
+        background-color: var(--color-bg-primary);
+        color: var(--color-text-primary);
+        border-color: var(--color-border);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      /* Global component styles */
+      .card-base {
+        background-color: var(--color-bg-secondary);
+        border: 1px solid var(--color-border);
+        transition: background-color 0.2s, border-color 0.2s;
+      }
+      .card-base:hover {
+        background-color: var(--color-bg-tertiary);
+        border-color: #475569;
+      }
+
+      .button-primary {
+        background-color: var(--color-accent);
+        color: var(--color-text-dark);
+        font-weight: bold;
+        transition: background-color 0.2s;
+      }
+      .button-primary:hover:not(:disabled) {
+        background-color: #67e8f9;
+      }
+      .button-primary:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .input-base {
+        background-color: var(--color-bg-primary);
+        border: 1px solid var(--color-border);
+        color: var(--color-text-primary);
+      }
+      .input-base::placeholder {
+        color: var(--color-text-secondary);
+      }
+      .input-base:focus {
+        outline: none;
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.3);
+      }
+
+      .glow-accent {
+        filter: drop-shadow(0 0 5px var(--color-accent));
+      }
+      .glow-danger {
+        filter: drop-shadow(0 0 8px var(--color-danger));
+      }
+
+      /* Road styling */
+      .road-base {
+        background-color: var(--road-color);
+        position: absolute;
+        z-index: 5; /* Lower z-index to be under buildings */
+      }
+      .road-base.horizontal::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 2px;
+          background-image: linear-gradient(to right, #fbbF24 50%, transparent 50%);
+          background-size: 15px 2px;
+          background-repeat: repeat-x;
+      }
+      .road-base.vertical::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 2px;
+          background-image: linear-gradient(to bottom, #fbbF24 50%, transparent 50%);
+          background-size: 2px 15px;
+          background-repeat: repeat-y;
+      }
+      
+      /* --- EMERGENCY MODE --- */
+      .emergency-mode {
+        border-color: var(--color-danger) !important;
+        box-shadow: 0 0 20px rgba(244, 63, 94, 0.5);
+      }
+      .emergency-mode .nav-active-indicator {
+        background-color: var(--color-danger);
+      }
+      .emergency-mode .map-background {
+        border-color: var(--color-danger);
+      }
+      .emergency-view {
+         background-color: #1a050b;
+        background-image:
+            linear-gradient(rgba(127, 29, 29, 0.4) 1px, transparent 1px),
+            linear-gradient(to right, rgba(127, 29, 29, 0.4) 1px, transparent 1px);
+        background-size: 3rem 3rem;
+      }
+
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
+    "react-dom/client": "https://esm.sh/react-dom@^19.1.0/client",
+    "@google/genai": "https://esm.sh/@google/genai@^1.10.0",
+    "react-icons/fi": "https://esm.sh/react-icons@^5.5.0/fi",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
+    "react/": "https://esm.sh/react@^19.1.0/",
+    "react-icons/": "https://esm.sh/react-icons@^5.5.0/"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

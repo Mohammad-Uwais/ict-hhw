@@ -1,0 +1,9 @@
+{
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ],
+  "name": "SECUR-E: Advanced Security Intelligence",
+  "description": "An unparalleled AI security service with proactive surveillance, family status tracking, and a comprehensive event log.",
+  "prompt": ""
+}
